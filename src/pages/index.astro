@@ -1,15 +1,60 @@
 ---
+import "../styles/global.css";
 ---
 
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="img/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="img/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="img/png" sizes="96x96" href="/favicon-96x96.png">
+    <link rel="icon" type="image/svg+xml" sizes="any" href="/rust-logo.svg">
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>MVRust</title>
   </head>
   <body>
-    <h1>Astro</h1>
+    <header>
+      <div id="title-container">
+        <h1 id="page-title">MV Rust Group</h1>
+      </div>
+      <nav id="social-links-container">
+        <menu id="social-links">
+          <li class="social-link">Discord</li>
+          <li class="social-link">Meetup</li>
+          <li class="social-link">Twitter</li>
+        </menu>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div>
+          <span>Mountain View Rust</span>
+          aaa
+        </div>
+      </section>
+      <section>
+        <div>
+          <span>Events</span>
+          bbb
+        </div>
+      </section>
+      <section>
+        <div>
+          <span>Resources</span>
+          ccc
+        </div>
+      </section>
+    </main>
+    <footer>
+      <menu>
+        <li>Site Source</li>
+        <li>Code of Conduct</li>
+      </menu>
+      <div>
+        <span>Credits</span>
+        The Rust logo is a trademark of the Rust Foundation.
+      </div>
+    </footer>
   </body>
 </html>
