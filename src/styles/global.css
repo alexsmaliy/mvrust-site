@@ -1,0 +1,111 @@
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: Concolas, Monaco, 'Lucida Sans Typewriter', monospace;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background:
+        /* dark center hole at (15px, 15px) */
+        radial-gradient(
+            circle 10px,
+            rgb(28, 18, 2) 90%,
+            transparent 95%
+        ) 15px 15px,
+        /* light-catching bottom rim of center hole at (15px, 15px) */
+        radial-gradient(
+            circle 12px,
+            rgba(255, 255, 255, 0.4) 70%,
+            transparent 90%
+        ) 15px 18px,
+        /* dark upper rim of center  hole at (15px, 15px) */
+        radial-gradient(
+            circle 12px,
+            rgba(40, 29, 3, 0.5) 75%,
+            transparent 90%
+        ) 15px 13px,
+        /* solid background-colored circle to cover center part of diffuse highlights/shadows of hole at (15px, 15px) */
+        radial-gradient(
+            circle 19px,
+            darkgoldenrod 0 70%,
+            transparent
+        ) 15px 15px,
+        /* diffuse highlight of hole at (15px, 15px) */
+        radial-gradient(
+            ellipse 26px 23px,
+            transparent 0,
+            rgba(255, 226, 119, 0.6) 53%,
+            rgba(255, 226, 119, 0.4) 55%,
+            transparent 75%
+        ) 15px 22px,
+        /* diffuse shadow of hole at (15px, 15px) */
+        radial-gradient(
+            ellipse 26px 23px,
+            transparent 0,
+            rgba(76, 55, 4, 0.4) 43%,
+            rgba(76, 55, 4, 0.2) 55%,
+            transparent 65%
+        ) 15px 8px,
+        /* dark center hole at (45px, 45px) */
+        radial-gradient(
+            circle 10px,
+            rgb(28, 18, 2) 90%,
+            transparent 95%
+        ) 45px 45px,
+        /* light-catching bottom rim of center hole at (45px, 45px) */
+        radial-gradient(
+            circle 12px,
+            rgba(255, 255, 255, 0.4) 70%,
+            transparent 90%
+        ) 45px 48px,
+        /* dark upper rim of center  hole at (45px, 45px) */
+        radial-gradient(
+            circle 12px,
+            rgba(40, 29, 3, 0.5) 75%,
+            transparent 90%
+        ) 45px 43px,
+        /* solid background-colored circle to cover center part of diffuse highlights/shadows of hole at (45px, 45px) */
+        radial-gradient(
+            circle 19px,
+            darkgoldenrod 0 70%,
+            transparent
+        ) 45px 45px,
+        /* diffuse highlight of hole at (45px, 45px) */
+        radial-gradient(
+            ellipse 26px 23px,
+            transparent 0,
+            rgba(255, 226, 119, 0.6) 53%,
+            rgba(255, 226, 119, 0.4) 55%,
+            transparent 75%
+        ) 45px 52px,
+        /* diffuse shadow of hole at (45px, 45px) */
+        radial-gradient(
+            ellipse 26px 23px,
+            transparent 0,
+            rgba(76, 55, 4, 0.4) 43%,
+            rgba(76, 55, 4, 0.2) 55%,
+            transparent 65%
+        ) 45px 38px,
+        /* actual background color */
+        darkgoldenrod;
+    background-size: 60px 60px;
+}
+
+body, h1, h2, h3, h4, h5, h6, p, ol, ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
