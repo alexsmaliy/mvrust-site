@@ -1,7 +1,694 @@
 ---
 import "../styles/global.css";
 ---
+<style lang="scss">
+@mixin screw-inner($diameter, $angle) {
+  width: $diameter;
+  height: $diameter;
+  border-radius: 50%;
+  background:
+    radial-gradient(
+      circle,
+      transparent 0,
+      transparent 60%,
+      rgba(0, 0, 0, 0.3) 80%
+    ),
+    linear-gradient(
+      $angle,
+      rgba(255, 255, 255, 0.2) 0,
+      transparent 40% 60%,
+      rgba(0, 0, 0, 0.2) 60%
+    ),
+    linear-gradient(
+      $angle,
+      rgb(215, 158, 13) 0 40%,
+      rgb(56, 44, 12) 40% 45%,
+      rgb(125, 100, 30) 45% 55%,
+      rgba(255, 219, 112, 0.56) 55% 60%,
+      rgb(215, 158, 13) 60%
+    );
+}
 
+@mixin screw-outer($row, $col, $diameter, $angle) {
+  grid-row: $row;
+  grid-column: $col;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .screw {
+    @include screw-inner($diameter, $angle);
+  }
+}
+
+#screw-container-left {
+  @include screw-outer(2, 1, 28px, 200deg);
+}
+
+#screw-container-right {
+  @include screw-outer(2, 12, 28px, 135deg);
+}
+
+  header {
+    display: grid;
+    grid-template-rows: 0 1fr auto;
+    grid-template-columns: 1fr minmax(400px, 900px) 1fr;
+    row-gap: 1em;
+  }
+
+  main {
+    display: grid;
+    grid-template-rows: 0 1fr auto;
+    grid-template-columns: 1fr minmax(400px, 900px) 1fr;
+    row-gap: 1em;
+  }
+
+  #main-container-decorations {
+    grid-row: 2;
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+
+    background:
+      repeating-linear-gradient(
+        15deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        56deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        87deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        109deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      linear-gradient(
+        rgba(255, 255, 255, 0.1) 0,
+        rgba(136, 102, 16, 0.1) 20%
+      ),
+      linear-gradient(
+        transparent 0,
+        rgba(255, 201, 63, 0.1) 10%,
+        rgba(136, 102, 16,0.1)
+      ),
+      rgb(196, 142, 7);
+      box-shadow:
+    inset 0 -3px 2px 1px rgba(100, 80, 27, 0.7),
+    inset 0 -4px 2px 3px rgb(136, 102, 16),
+    inset 0 -9px 6px 0px rgba(255, 240, 188, 0.2),
+      
+      inset 0 8px 5px 0px rgb(255, 224, 146),
+      inset 0 4px 0px 1px rgba(255, 220, 112, 0.7),
+      inset 0 3px 2px 3px rgb(136, 102, 16),
+      
+      0 7px 4px 0px rgba(15, 11, 0, 0.5);
+  }
+
+  #main-screw-container-left {
+    grid-row: 2;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #main-screw-container-right {
+    grid-row: 2;
+    grid-column: 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #main-screw-left {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background:
+    radial-gradient(
+      circle,
+      transparent 0,
+      transparent 60%,
+      rgba(0, 0, 0, 0.3) 80%
+    ),
+    linear-gradient(
+      150deg,
+      rgba(255, 255, 255, 0.2) 0,
+      transparent 40% 60%,
+      rgba(0, 0, 0, 0.2) 60%
+    ),
+    linear-gradient(
+      150deg,
+      rgb(215, 158, 13) 0 40%,
+      rgb(56, 44, 12) 40% 45%,
+      rgb(125, 100, 30) 45% 55%,
+      rgba(255, 219, 112, 0.56) 55% 60%,
+      rgb(215, 158, 13) 60%
+    )
+    ;
+  }
+
+  #main-screw-right {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background:
+    radial-gradient(
+      circle,
+      transparent 0,
+      transparent 60%,
+      rgba(0, 0, 0, 0.3) 80%
+    ),
+    linear-gradient(
+      195deg,
+      rgba(255, 255, 255, 0.2) 0,
+      transparent 40% 60%,
+      rgba(0, 0, 0, 0.2) 60%
+    ),
+    linear-gradient(
+      195deg,
+      rgb(215, 158, 13) 0 40%,
+      rgb(56, 44, 12) 40% 45%,
+      rgb(125, 100, 30) 45% 55%,
+      rgba(255, 219, 112, 0.56) 55% 60%,
+      rgb(215, 158, 13) 60%
+    )
+    ;
+  }
+
+  #main-container {
+    grid-row: 2;
+    grid-column: 2;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+
+  #about-box {
+    /* background: darkgoldenrod; */
+    margin: 20px 60px;
+    padding: 1ex;
+    /* border-style: groove;
+    border-color: rgba(100, 80, 27, 0.3);
+    border-width: 8px; */
+  }
+
+  #events-box {
+    /* background: darkgoldenrod; */
+    margin: 0 60px;
+    padding: 1ex;
+    /* border-style: groove;
+    border-color: rgba(100, 80, 27, 0.3);
+    border-width: 8px; */
+  }
+
+  #events-list {
+    height: 15ex;
+    line-height: 3ex;
+    overflow-y: scroll;
+    border-radius: 5px;
+    border-style: solid;
+    padding: 1ex;
+    margin: 1ex;
+  }
+
+  #resources-box {
+    /* background: darkgoldenrod; */
+    margin: 20px 60px;
+    padding: 1ex;
+    /* border-style: groove;
+    border-color: rgba(100, 80, 27, 0.3);
+    border-width: 8px; */
+  }
+
+  p {
+    font-family: Geneva, Verdana, sans-serif;
+    color: rgb(56, 44, 12);
+    line-height: 2.25ex;
+    text-justify: distribute;
+    text-align: justify;
+    user-select: all;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  /* strong {
+    font-family: 'Arial Black', sans-serif;
+  } */
+
+  .callout {
+    -webkit-text-fill-color: rgb(51, 33, 4);
+    /* -webkit-text-stroke: rgba(255, 219, 112, 0.56) 0.5px; */
+    /* font-weight: 800; */
+    font-size: 125%;
+
+    text-shadow:
+      0px 1px 0px rgba(70, 56, 19, 0.3),
+      0px 1px 0px rgb(255, 224, 146);
+  }
+
+  #about-box-container {
+    grid-row: 1;
+  }
+
+  #events-box-container {
+    grid-row: 2;
+  }
+
+  #resources-box-container {
+    grid-row: 3;
+  }
+
+  #social-links-container-decorations {
+    grid-row: 3;
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+
+    background:
+      repeating-linear-gradient(
+        15deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        56deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        87deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        109deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      linear-gradient(
+        rgba(255, 255, 255, 0.1) 0,
+        rgba(136, 102, 16, 0.1) 20%
+      ),
+      linear-gradient(
+        transparent 0,
+        rgba(255, 201, 63, 0.1) 10%,
+        rgba(136, 102, 16,0.1)
+      ),
+      rgb(196, 142, 7);
+      box-shadow:
+    inset 0 -3px 2px 1px rgba(100, 80, 27, 0.7),
+    inset 0 -4px 2px 3px rgb(136, 102, 16),
+    inset 0 -9px 6px 0px rgba(255, 240, 188, 0.2),
+      
+      inset 0 8px 5px 0px rgb(255, 224, 146),
+      inset 0 4px 0px 1px rgba(255, 220, 112, 0.7),
+      inset 0 3px 2px 3px rgb(136, 102, 16),
+      
+      0 7px 4px 0px rgba(15, 11, 0, 0.5);
+  }
+
+  #social-links-screw-container-left {
+    grid-row: 2;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #social-links-screw-container-right {
+    grid-row: 2;
+    grid-column: 12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #social-links-screw-left {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background:
+    radial-gradient(
+      circle,
+      transparent 0,
+      transparent 60%,
+      rgba(0, 0, 0, 0.3) 80%
+    ),
+    linear-gradient(
+      220deg,
+      rgba(255, 255, 255, 0.2) 0,
+      transparent 40% 60%,
+      rgba(0, 0, 0, 0.2) 60%
+    ),
+    linear-gradient(
+      220deg,
+      rgb(215, 158, 13) 0 40%,
+      rgb(56, 44, 12) 40% 45%,
+      rgb(125, 100, 30) 45% 55%,
+      rgba(255, 219, 112, 0.56) 55% 60%,
+      rgb(215, 158, 13) 60%
+    )
+    ;
+  }
+
+  #social-links-screw-right {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background:
+    radial-gradient(
+      circle,
+      transparent 0,
+      transparent 60%,
+      rgba(0, 0, 0, 0.3) 80%
+    ),
+    linear-gradient(
+      175deg,
+      rgba(255, 255, 255, 0.2) 0,
+      transparent 40% 60%,
+      rgba(0, 0, 0, 0.2) 60%
+    ),
+    linear-gradient(
+      175deg,
+      rgb(215, 158, 13) 0 40%,
+      rgb(56, 44, 12) 40% 45%,
+      rgb(125, 100, 30) 45% 55%,
+      rgba(255, 219, 112, 0.56) 55% 60%,
+      rgb(215, 158, 13) 60%
+    )
+    ;
+  }
+
+  #title-container-decorations {
+    grid-row: 2;
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+
+    background:
+      repeating-linear-gradient(
+        15deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        56deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        87deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      repeating-linear-gradient(
+        109deg,
+        transparent 0 4px,
+        transparent 4px,
+        rgba(255, 224, 146, 0.03),
+        transparent 6px
+      ),
+      linear-gradient(
+        rgba(255, 255, 255, 0.1) 0,
+        rgba(136, 102, 16, 0.1) 20%
+      ),
+      linear-gradient(
+        transparent 0,
+        rgba(255, 201, 63, 0.1) 10%,
+        rgba(136, 102, 16,0.1)
+      ),
+      rgb(196, 142, 7);
+    
+    text-transform: uppercase;
+    box-shadow:
+    inset 0 -3px 2px 1px rgba(100, 80, 27, 0.7),
+    inset 0 -4px 2px 3px rgb(136, 102, 16),
+    inset 0 -9px 6px 0px rgba(255, 240, 188, 0.2),
+      
+      inset 0 8px 5px 0px rgb(255, 224, 146),
+      inset 0 4px 0px 1px rgba(255, 220, 112, 0.7),
+      inset 0 3px 2px 3px rgb(136, 102, 16),
+
+    0 10px 4px 0px rgba(15, 11, 0, 0.5);  
+  }
+
+  // #screw-container-left {
+  //   grid-row: 2;
+  //   grid-column: 1;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+
+  // #screw-container-right {
+  //   grid-row: 2;
+  //   grid-column: 12;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: center;
+  // }
+
+  // #screw-right {
+  //   width: 28px;
+  //   height: 28px;
+  //   border-radius: 50%;
+  //   background:
+  //   radial-gradient(
+  //     circle,
+  //     transparent 0,
+  //     transparent 60%,
+  //     rgba(0, 0, 0, 0.3) 80%
+  //   ),
+  //   linear-gradient(
+  //     135deg,
+  //     rgba(255, 255, 255, 0.2) 0,
+  //     transparent 40% 60%,
+  //     rgba(0, 0, 0, 0.2) 60%
+  //   ),
+  //   linear-gradient(
+  //     135deg,
+  //     rgb(215, 158, 13) 0 40%,
+  //     rgb(56, 44, 12) 40% 45%,
+  //     rgb(125, 100, 30) 45% 55%,
+  //     rgba(255, 219, 112, 0.56) 55% 60%,
+  //     rgb(215, 158, 13) 60%
+  //   )
+  //   ;
+  // }
+
+  // #screw-left {
+  //   width: 28px;
+  //   height: 28px;
+  //   border-radius: 50%;
+  //   background:
+  //   radial-gradient(
+  //     circle,
+  //     transparent 0,
+  //     transparent 60%,
+  //     rgba(0, 0, 0, 0.3) 80%
+  //   ),
+  //   linear-gradient(
+  //     190deg,
+  //     rgba(255, 255, 255, 0.2) 0,
+  //     transparent 40% 60%,
+  //     rgba(0, 0, 0, 0.2) 60%
+  //   ),
+  //   linear-gradient(
+  //     190deg,
+  //     rgb(215, 158, 13) 0 40%,
+  //     rgb(56, 44, 12) 40% 45%,
+  //     rgb(125, 100, 30) 45% 55%,
+  //     rgba(255, 219, 112, 0.56) 55% 60%,
+  //     rgb(215, 158, 13) 60%
+  //   )
+  //   ;
+  // }
+
+  menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    /* padding: 0.25em 0em 0.25em 0em; */
+    margin-block-start: 0.8em;
+    margin-block-end: 1em;
+  }
+
+  .social-link-icon {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  .social-link-text {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    user-select: none;
+    -webkit-user-select: none;
+
+    -webkit-text-fill-color: rgb(51, 33, 4);
+    /* -webkit-text-stroke: rgba(255, 219, 112, 0.56) 1px; */
+
+    text-shadow:
+      0px 1px 0px rgba(70, 56, 19, 0.3),
+      0px 1px 0px rgb(255, 224, 146);
+  }
+
+  #social-links:first-child {
+    padding-left: 100px;
+  }
+
+  #social-links:last-child {
+    padding-right: 100px;
+  }
+
+  .social-link-container {
+    flex-basis: 90px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 90px;
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+    inset 0 -2px 2px 0 rgba(0, 0, 0, 0.6),
+    inset 0 -2px 2px 1px rgba(100, 80, 27, 0.7),
+    inset 0 -3px 2px 3px rgb(136, 102, 16),
+    inset 0 -6px 6px 0px rgba(255, 240, 188, 0.2),
+      
+      inset 0 5px 5px 0px rgb(255, 224, 146),
+      inset 0 3px 0px 1px rgba(255, 220, 112, 0.7),
+      inset 0 2px 2px 3px rgb(136, 102, 16),
+
+    0 6px 2px 0px rgba(15, 11, 0, 0.5);
+  }
+
+  #social-links-container {
+    display: grid;
+    grid-template-rows: 1fr;
+
+    grid-row: 3;
+    grid-column: 2;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  #title-container {
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    text-overflow: "--";
+    overflow: hidden;
+    /* white-space: nowrap; */
+    user-select: none;
+    -webkit-user-select: none;
+
+    display: grid;
+    /* grid-template-rows: repeat(3, 33%);
+    grid-template-columns: repeat(12, 8.33%); */
+
+    -webkit-text-fill-color: rgb(28, 18, 2);
+    -webkit-text-stroke: rgba(255, 219, 112, 0.56) 2px;
+
+    text-shadow:
+      0px 2px 0px rgba(70, 56, 19, 0.3),
+      0px 1px 0px rgb(255, 224, 146);
+
+    font-weight: 1200;  
+  }
+
+  #title-container {
+    /* text-overflow: ellipsis; */
+    /* width: fit-content; */
+    /* height: 300px; */
+    padding: 0.5em 1.5em 0.5em 1.5em;
+    /* border-radius: 0.5em / 0.5em; */
+    font-size: 150%;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  /* SLATE-LOOKING STEPS
+  background:
+      repeating-linear-gradient(
+        transparent 0,
+        rgba(95, 89, 75, 0.95) 3px 19px,
+        rgba(85, 81, 68, 0.95) 20px,
+        rgba(212, 208, 186, 0.8) 44px,
+        transparent 46px
+      ),
+      repeating-linear-gradient(
+        290deg,
+        transparent 0 3px,
+        rgba(227, 232, 225, 0.1) 3px 4px
+      ),
+      repeating-linear-gradient(
+        310deg,
+        transparent 0 3px,
+        rgba(226, 225, 232, 0.1) 3px 4px
+      ),
+      repeating-linear-gradient(
+        -320deg,
+        transparent 0 3px,
+        rgba(232, 232, 225, 0.15) 3px 4px
+      ),
+      repeating-linear-gradient(
+        330deg,
+        transparent 0 3px,
+        rgba(232, 232, 225, 0.15) 3px 4px
+      ),
+      repeating-linear-gradient(
+        185deg,
+        transparent 0 3px,
+        rgba(232, 232, 225, 0.1) 3px 4px
+      ),
+      rgb(172, 162, 139);
+  */
+  
+</style>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -15,36 +702,110 @@ import "../styles/global.css";
   </head>
   <body>
     <header>
+      <div id="title-container-decorations">
+        <div id="screw-container-left">
+          <div id="screw-left" class="screw"></div>
+        </div>
+        <div id="screw-container-right">
+          <div id="screw-right" class="screw"></div>
+        </div>
+      </div>
       <div id="title-container">
-        <h1 id="page-title">MV Rust Group</h1>
+        <h1 id="page-title">Mountain View<br>Rust Study Group</h1>
+      </div>
+      <div id="social-links-container-decorations">
+        <div id="social-links-screw-container-left">
+          <div id="social-links-screw-left"></div>
+        </div>
+        <div id="social-links-screw-container-right">
+          <div id="social-links-screw-right"></div>
+        </div>
       </div>
       <nav id="social-links-container">
         <menu id="social-links">
-          <li class="social-link">Discord</li>
-          <li class="social-link">Meetup</li>
-          <li class="social-link">Twitter</li>
+          <li class="social-link-container">
+            <div class="social-link-icon">
+              <img src="/discord-mark-black.svg">
+            </div>
+            <div class="social-link-text">
+              Discord
+            </div>
+          </li>
+          <li class="social-link-container">
+            <div class="social-link-icon">
+              <img src="/meetup.svg">
+            </div>
+            <div class="social-link-text">
+              Meetup
+            </div>
+          </li>
+          <li class="social-link-container">
+            <div class="social-link-icon">
+              <img src="/Logo black.svg">
+            </div>
+            <div class="social-link-text">
+              Twitter
+            </div>
+          </li>
         </menu>
       </nav>
     </header>
     <main>
-      <section>
-        <div>
-          <span>Mountain View Rust</span>
-          aaa
+      <div id="main-container-decorations">
+        <div id="main-screw-container-left">
+          <div id="main-screw-left"></div>
         </div>
-      </section>
-      <section>
-        <div>
-          <span>Events</span>
-          bbb
+        <div id="main-screw-container-right">
+          <div id="main-screw-right"></div>
         </div>
-      </section>
-      <section>
-        <div>
-          <span>Resources</span>
-          ccc
-        </div>
-      </section>
+      </div>
+      <div id="main-container">
+        <section id="about-box-container">
+          <div id="about-box">
+            <p id="about-text">
+              <span class="callout"><strong>Who is this group for?</strong></span>
+              <br>
+              Anyone interested in the
+              <a href="https://www.rust-lang.org/">Rust programming language</a>:
+              hobbyists, professionals, students, and anyone else.
+              We plan to meet twice per month to work on personal
+              projects or code exercises and present lightning talks
+              about Rust and adjacent topics. This group does not
+              have a corporate sponsor. We meet to learn from each
+              other and have fun with like-minded Rustaceans.
+            </p>
+          </div>
+        </section>
+        <section id="events-box-container">
+          <div id="events-box">
+            <p id="events-text">
+              <span class="callout"><strong>Events</strong></span>
+              <br>
+              Upcoming and past meetings.
+            </p>
+            <ul id="events-list">
+              <li class="event">SOON!</li>
+              <li class="event">SOON!</li>
+              <li class="event">SOON!</li>
+              <li class="event">SOON!</li>
+              <li class="event">SOON!</li>
+            </ul>
+          </div>
+        </section>
+        <section id="resources-box-container">
+          <div id="resources-box">
+            <p id="resources-text">
+              <span class="callout"><strong>Rust Resources</strong></span>
+              <br>
+              Anyone interested in the Rust programming language:
+              hobbyists, professionals, students, and anyone else.
+              We plan to meet twice per month to work on personal
+              projects or code exercises and present lightning talks
+              about Rust and adjacent topics. While this group is
+            </p>
+          </div>
+        </section>
+      </div>
     </main>
     <footer>
       <menu>

@@ -1,7 +1,7 @@
 html {
     box-sizing: border-box;
     font-size: 16px;
-    font-family: Concolas, Monaco, 'Lucida Sans Typewriter', monospace;
+    font-family: Monaco, 'Lucida Sans', 'Lucida Sans Typewriter', monospace;
 }
 
 *, *:before, *:after {
@@ -19,7 +19,7 @@ body {
         /* light-catching bottom rim of center hole at (15px, 15px) */
         radial-gradient(
             circle 12px,
-            rgba(255, 255, 255, 0.4) 70%,
+            rgba(255, 255, 255, 0.4) 60%,
             transparent 90%
         ) 15px 18px,
         /* dark upper rim of center  hole at (15px, 15px) */
@@ -59,7 +59,7 @@ body {
         /* light-catching bottom rim of center hole at (45px, 45px) */
         radial-gradient(
             circle 12px,
-            rgba(255, 255, 255, 0.4) 70%,
+            rgba(255, 255, 255, 0.4) 60%,
             transparent 90%
         ) 45px 48px,
         /* dark upper rim of center  hole at (45px, 45px) */
