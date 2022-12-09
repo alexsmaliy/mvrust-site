@@ -72,6 +72,19 @@ $bg-panel-inset-shadows: (
   inset 0 3px 2px 3px rgb(136, 102, 16)
 );
 
+$bg-panel-reverse-shadows: (
+  inset 0 3px 2px 1px rgba(100, 80, 27, 0.7),
+  inset 0 4px 2px 3px rgb(136, 102, 16),
+  inset 0 9px 6px 0px rgba(255, 240, 188, 0.2),
+  inset 0 -5px 5px 0px rgba(255, 224, 146, 0.5),
+  inset 0 -3px 5px 0px rgba(255, 220, 112, 0.5),
+  1px 1px 5px 0 rgba(100, 80, 27, 0.7),
+  0px 3px 4px 0 rgba(255, 220, 112, 0.7),
+  -1px 1px 5px 0 rgba(100, 80, 27, 0.7),
+  1px -1px 5px 0 rgba(100, 80, 27, 0.7),
+  -1px -1px 5px 0 rgba(100, 80, 27, 0.7)
+);
+
 $bg-panel-drop-shadow: 0 7px 4px 0px rgba(15, 11, 0, 0.5);
 
 $button-inset-shadows: (
@@ -333,7 +346,41 @@ main {
 
 .callout {
   @include engraved-text-small;
+  @include not-selectable;
   font-size: 115%;
+  background:
+    list.join($bg-panel-scratchy-texture, $bg-panel-light-shadow-gradient),
+    var(--main-bg-color);
+  padding: 0.25em 1em 0.25em 0.5em;
+  clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+}
+
+.callout-wrapper {
+  padding: 0.25em 0.35em 0.25em 0.1em;
+  margin-bottom: 0.75ex;
+  clip-path: polygon(0% 0%, calc(100% - 22px) 0%, 100% 50%, calc(100% - 22px) 100%, 0% 100%);
+  display: inline-block;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0,
+      // transparent 60%,
+      rgba(0, 0, 0, 0.3) 80%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4) 0 15%,
+      transparent 40% 60%,
+      rgba(0, 0, 0, 0.2) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(215, 158, 13) 0,
+      // rgb(56, 44, 12) 40% 45%,
+      rgb(125, 100, 30) 100%,
+      // rgba(255, 219, 112, 0.8) 55% 60%,
+      // rgb(215, 158, 13) 60%
+    );
 }
 
 #events-container {
@@ -345,10 +392,12 @@ main {
   height: 15ex;
   line-height: 3ex;
   overflow-y: scroll;
-  border-radius: 5px;
-  border-style: solid;
+  // border-radius: 5px;
+  // border-style: solid;
   padding: 1ex;
-  margin: 1ex;
+  // margin: 1ex;
+  min-height: 80%;
+  box-shadow: $bg-panel-reverse-shadows;
 }
 
 #resources-container {
@@ -435,7 +484,9 @@ main {
       <div id="main-container">
         <section id="about-container">
           <p id="about-text">
-            <span class="callout"><strong>Who is this group for?</strong></span>
+            <span class="callout-wrapper">
+              <span class="callout">Who is this group for?</span>
+            </span>
             <br>
             Anyone interested in the <a href="https://www.rust-lang.org/">Rust programming language</a>:
             hobbyists, professionals, students, and anyone else. We plan to meet twice per month to work
@@ -446,9 +497,10 @@ main {
         </section>
         <section id="events-container">
           <p id="events-text">
-            <span class="callout"><strong>Events</strong></span>
+            <span class="callout-wrapper">
+              <span class="callout">Events</span>
+            </span>
             <br>
-            Upcoming and past meetings.
           </p>
           <ul id="events-list">
             <li class="event">SOON!</li>
@@ -460,7 +512,7 @@ main {
         </section>
         <section id="resources-container">
           <p id="resources-text">
-            <span class="callout"><strong>Rust Resources</strong></span>
+            <span class="callout-wrapper"><span class="callout">Rust Resources</span></span>
             <br>
             Anyone interested in the Rust programming language:
             hobbyists, professionals, students, and anyone else.
