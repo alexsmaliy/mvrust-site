@@ -162,6 +162,45 @@ $button-drop-shadow: 0 3px 2px 0px rgba(15, 11, 0, 0.5);
   }
 }
 
+@mixin callout-outer {
+  padding: 0.25em 0.35em 0.25em 0.1em;
+  margin-bottom: 0.75ex;
+  clip-path: polygon(0% 0%, calc(100% - 22px) 0%, 100% 50%, calc(100% - 22px) 100%, 0% 100%);
+  display: inline-block;
+  background:
+    linear-gradient(
+      180deg,
+      transparent 0,
+      rgba(0, 0, 0, 0.3) 80%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.4) 0 15%,
+      transparent 40% 60%,
+      rgba(0, 0, 0, 0.2) 60%
+    ),
+    linear-gradient(
+      180deg,
+      rgb(215, 158, 13) 0,
+      rgb(125, 100, 30) 100%,
+    );
+
+  .callout {
+    @include callout-inner;
+  }
+}
+
+@mixin callout-inner {
+  @include engraved-text-small;
+  @include not-selectable;
+  font-size: 115%;
+  background:
+    list.join($bg-panel-scratchy-texture, $bg-panel-light-shadow-gradient),
+    var(--main-bg-color);
+  padding: 0.25em 1em 0.25em 0.5em;
+  clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
+}
+
 // ACTUAL CSS SELECTORS
 
 #title-container-decorations > .screw-container.left {
@@ -173,7 +212,7 @@ $button-drop-shadow: 0 3px 2px 0px rgba(15, 11, 0, 0.5);
 }
 
 #social-links-container-decorations > .screw-container.left {
-  @include screw-outer(2, 1, $screw-diameter, 175deg);
+  @include screw-outer(2, 1, $screw-diameter, 170deg);
 }
 
 #social-links-container-decorations > .screw-container.right {
@@ -186,6 +225,14 @@ $button-drop-shadow: 0 3px 2px 0px rgba(15, 11, 0, 0.5);
 
 #main-container-decorations > .screw-container.right {
   @include screw-outer(2, 12, $screw-diameter, 195deg);
+}
+
+#footer-decorations > .screw-container.left {
+  @include screw-outer(2, 1, $screw-diameter, 135deg);
+}
+
+#footer-decorations > .screw-container.right {
+  @include screw-outer(2, 12, $screw-diameter, 200deg);
 }
 
 p {
@@ -344,43 +391,8 @@ main {
   padding: 1ex;
 }
 
-.callout {
-  @include engraved-text-small;
-  @include not-selectable;
-  font-size: 115%;
-  background:
-    list.join($bg-panel-scratchy-texture, $bg-panel-light-shadow-gradient),
-    var(--main-bg-color);
-  padding: 0.25em 1em 0.25em 0.5em;
-  clip-path: polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%);
-}
-
 .callout-wrapper {
-  padding: 0.25em 0.35em 0.25em 0.1em;
-  margin-bottom: 0.75ex;
-  clip-path: polygon(0% 0%, calc(100% - 22px) 0%, 100% 50%, calc(100% - 22px) 100%, 0% 100%);
-  display: inline-block;
-  background:
-    linear-gradient(
-      180deg,
-      transparent 0,
-      // transparent 60%,
-      rgba(0, 0, 0, 0.3) 80%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(255, 255, 255, 0.4) 0 15%,
-      transparent 40% 60%,
-      rgba(0, 0, 0, 0.2) 60%
-    ),
-    linear-gradient(
-      180deg,
-      rgb(215, 158, 13) 0,
-      // rgb(56, 44, 12) 40% 45%,
-      rgb(125, 100, 30) 100%,
-      // rgba(255, 219, 112, 0.8) 55% 60%,
-      // rgb(215, 158, 13) 60%
-    );
+  @include callout-outer();
 }
 
 #events-container {
@@ -390,19 +402,79 @@ main {
 
 #events-list {
   height: 15ex;
-  line-height: 3ex;
+  line-height: 1.25;
   overflow-y: scroll;
-  // border-radius: 5px;
-  // border-style: solid;
   padding: 1ex;
-  // margin: 1ex;
   min-height: 80%;
   box-shadow: $bg-panel-reverse-shadows;
+  list-style-type: square;
+  list-style-position: inside;
+}
+
+.event {
+  font-family: $body-text-fonts;
 }
 
 #resources-container {
   margin: 20px calc(100% / 12);
   padding: 1ex;
+}
+
+menu#resources {
+  margin: unset;
+  list-style-type: none;
+  padding-left: 30px;
+  line-height: 150%;
+  font-family: $body-text-fonts;
+}
+
+.resource-container {
+  padding-left: 0;
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 100px 1fr;
+}
+
+.resource {
+  grid-column: 1;
+}
+
+.resource-description {
+  grid-column: 2;
+}
+
+footer {
+  display: grid;
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr minmax($bg-panel-min-width, $bg-panel-max-width) 1fr;
+  row-gap: 1em;
+}
+
+#footer-decorations {
+  z-index: -1;
+  grid-row: 1;
+  grid-column: 2;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+
+  background:
+    list.join($bg-panel-scratchy-texture, $bg-panel-light-shadow-gradient),
+    var(--main-bg-color);
+
+  box-shadow: list.append(
+    $bg-panel-inset-shadows,
+    $bg-panel-drop-shadow
+  );
+}
+
+#footer-items {
+  grid-row: 1;
+  grid-column: 2;
+  font-family: $body-text-fonts;
+  margin: 10px calc(100% / 12);
+  padding: 1ex;
+  list-style: none;
 }
 </style>
 <html lang="en">
@@ -503,35 +575,52 @@ main {
             <br>
           </p>
           <ul id="events-list">
-            <li class="event">SOON!</li>
-            <li class="event">SOON!</li>
-            <li class="event">SOON!</li>
-            <li class="event">SOON!</li>
-            <li class="event">SOON!</li>
+            <li class="event">
+              <strong>Meetup #2 @ Hacker Dojo</strong>
+              (<a href="https://www.meetup.com/hackerdojo/events/290337278/" target="_blank" rel="noopener noreferrer">link</a>)
+              7:00PM-9:00PM on January 12, 2023
+            </li>
+            <li class="event">
+              <strong>Meetup #1 @ Hacker Dojo</strong>
+              (<a href="https://www.meetup.com/hackerdojo/events/290203072/" target="_blank" rel="noopener noreferrer">link</a>)
+              7:00PM-9:00PM on December 15, 2022
+            </li>
           </ul>
         </section>
         <section id="resources-container">
-          <p id="resources-text">
-            <span class="callout-wrapper"><span class="callout">Rust Resources</span></span>
-            <br>
-            Anyone interested in the Rust programming language:
-            hobbyists, professionals, students, and anyone else.
-            We plan to meet twice per month to work on personal
-            projects or code exercises and present lightning talks
-            about Rust and adjacent topics. While this group is
-          </p>
+          <span class="callout-wrapper"><span class="callout">Rust Resources</span></span>
+          <menu id="resources">
+            <li class="resource-container">
+              <div class="resource">
+                <a href="https://sfrust.com/">SF Rust</a>
+              </div>
+              <div class="resource-description">
+                Another IRL Rust meetup in San Francisco.
+              </div>
+            </li>
+          </menu>
         </section>
       </div>
     </main>
     <footer>
-      <menu>
-        <li>Site Source</li>
-        <li>Code of Conduct</li>
-      </menu>
-      <div>
-        <span>Credits</span>
-        The Rust logo is a trademark of the Rust Foundation.
+      <div id="footer-decorations">
+        <div class="screw-container left">
+          <div class="screw"></div>
+        </div>
+        <div class="screw-container right">
+          <div class="screw"></div>
+        </div>
       </div>
+      <menu id="footer-items">
+        <li class="footer-item">
+          <a href="https://github.com/alexsmaliy/mvrust-site" target="_blank" rel="noopener noreferrer">
+            site source
+          </a>
+        </li>
+        <li class="footer-item">
+          The Rust logo is a trademark of the Rust Foundation.
+        </li>
+      </menu>
     </footer>
   </body>
 </html>
